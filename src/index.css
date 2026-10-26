@@ -1,0 +1,92 @@
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #18202b;
+  --muted: #627082;
+  --line: #dde3ea;
+  --accent: #1d4ed8;
+  --accent-text: #ffffff;
+  --warn: #a15c07;
+  --error: #b42318;
+  --ok: #067647;
+  font: 15px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f141a;
+    --card: #18202a;
+    --text: #e5e9ef;
+    --muted: #93a0b0;
+    --line: #2a3441;
+    --accent: #4d84ff;
+    --warn: #f1a54a;
+    --error: #ff7a70;
+    --ok: #4ad295;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1120px; margin: 0 auto; padding: 20px 16px; }
+main.center { display: grid; place-items: center; min-height: 100vh; }
+h1, h2 { margin: 0 0 8px; }
+h2 { font-size: 18px; }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.strong { font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.warning { color: var(--warn); }
+.error { color: var(--error); }
+.notice { background: var(--card); border-left: 4px solid var(--ok); padding: 10px 14px; border-radius: 6px; }
+
+button, input, select { font: inherit; color: inherit; }
+button {
+  border: 1px solid var(--line); background: var(--card); padding: 7px 14px; border-radius: 6px; cursor: pointer;
+}
+button:disabled { opacity: .55; cursor: not-allowed; }
+button.link { border: 0; background: none; padding: 0; color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); width: 100%; padding: 10px; }
+input, select { border: 1px solid var(--line); background: var(--bg); padding: 7px 10px; border-radius: 6px; min-width: 0; }
+input[aria-invalid='true'] { border-color: var(--warn); }
+label { display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.login { width: min(360px, 100%); display: grid; gap: 14px; }
+
+.topbar {
+  display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: var(--card);
+  border-bottom: 1px solid var(--line); flex-wrap: wrap;
+}
+.topbar nav { display: flex; gap: 4px; margin-right: auto; }
+.topbar nav button { border: 0; background: none; }
+.topbar nav button.active { color: var(--accent); font-weight: 600; }
+
+.shop { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
+@media (max-width: 860px) { .shop { grid-template-columns: 1fr; } }
+.toolbar { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.toolbar input { flex: 1; min-width: 180px; }
+table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 10px; overflow: hidden; }
+th, td { padding: 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+tr.unavailable td { color: var(--muted); }
+
+.cart { display: grid; gap: 12px; position: sticky; top: 16px; }
+.cart-line { display: grid; grid-template-columns: 1fr 84px; gap: 8px; align-items: start; }
+.totals { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; margin: 0; }
+.totals dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+ul.error { margin: 0; padding-left: 18px; font-size: 14px; }
+
+.orders { display: grid; gap: 12px; }
+.order header { display: flex; gap: 8px; align-items: center; }
+.order ul { margin: 8px 0; padding-left: 18px; }
+.order li { display: flex; justify-content: space-between; gap: 12px; }
+.order footer { display: flex; justify-content: space-between; align-items: center; }
+.order.new { border-color: var(--ok); }
+.badge { margin-left: auto; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); }
+.badge.cancelled { color: var(--muted); }
+.badge.confirmed, .badge.senttoerp { color: var(--ok); }
